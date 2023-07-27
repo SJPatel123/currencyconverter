@@ -1,0 +1,25 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    background-color: #000000de;
+    color: #fff;
+    box-shadow: 0 0 5px #000;
+}
+
+.nav-title{
+    font-size: 22px;
+    font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Stack items vertically */
+        padding: 10px;
+    }
+
+    .nav-title, .dark-mode {
+        margin: 5px 0; /* Add some space between the items */
+    }
+}
