@@ -2,19 +2,6 @@ import React, { useState, useRef } from 'react'
 import './darkmode.css'
 
 export default function DarkMode() {
-    const [isChecked, setIsChecked] = useState(false);
-    const [mode, setMode] = useState('');
-
-    const handleCheck = (event) => {
-        setIsChecked(event.target.checked);
-        if(isChecked){
-            setMode('dark');
-        }
-        else{
-            setMode('');
-        }
-    }
-
     return (
         <>
             {/* <div className="w-full h-full flex flex-col justify-center items-center">
@@ -53,7 +40,7 @@ export default function DarkMode() {
                 <div className="flex flex-row justify-between toggle">
                     <label htmlFor="dark-toggle" className="flex items-center cursor-pointer">
                         <div className="relative">
-                            <input onChange={handleCheck} type="checkbox" name="dark-mode" id="dark-toggle" className="checkbox hidden" />
+                            <input type="checkbox" name="dark-mode" id="dark-toggle" className="checkbox hidden" />
                             <div className="block border-[1px] dark:border-white border-white-900 w-14 h-8 rounded-full"></div>
                             <div className="dot absolute left-1 top-1 dark:bg-white bg-white w-6 h-6 rounded-full transition"></div>
                         </div>
