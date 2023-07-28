@@ -2,6 +2,9 @@ import Express from 'express';
 import cors from 'cors';
 // import bodyParser from 'body-parser';
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 const app = Express();
 
 app.use(Express.json());
@@ -11,13 +14,19 @@ app.use(cors());
 import axios from 'axios';
 import bodyParser from 'body-parser';
 
+const api_key = process.env.CURR_API_KEY;
+const get_curr_url = process.env.GET_CURR_URL;
+const convert_curr_url = process.env.CONVERT_CURR_URL;
+const rpd_api_host = process.env.RPD_API_HOST;
+// console.log(apiKey);
+
 app.get("/get-currencies", bodyParser.json(), async (req, res) => {
   const options_currencies = {
     method: 'GET',
-    url: 'https://currency-converter-pro1.p.rapidapi.com/currencies',
+    url: `${get_curr_url}`,
     headers: {
-      'X-RapidAPI-Key': '80ac8a58b8msh9e75c5e74bc0502p1cfb77jsn114a1a0296b5',
-      'X-RapidAPI-Host': 'currency-converter-pro1.p.rapidapi.com'
+      'X-RapidAPI-Key': `${api_key}`,
+      'X-RapidAPI-Host': `${rpd_api_host}`
     }
   };
   
@@ -54,15 +63,15 @@ app.get('/convert-currency', async (req, res) => {
 
   const options_convert_currency = {
     method: 'GET',
-    url: 'https://currency-converter-pro1.p.rapidapi.com/convert',
+    url: `${convert_curr_url}`,
     params: {
       from: selectedOptionFromCountry['value'],
       to: selectedOptionToCountry['value'],
       amount: amount
     },
     headers: {
-      'X-RapidAPI-Key': '80ac8a58b8msh9e75c5e74bc0502p1cfb77jsn114a1a0296b5',
-      'X-RapidAPI-Host': 'currency-converter-pro1.p.rapidapi.com'
+      'X-RapidAPI-Key': `${api_key}`,
+      'X-RapidAPI-Host': `${rpd_api_host}`
     }
   };
   
